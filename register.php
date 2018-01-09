@@ -6,8 +6,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$prefix = "cyberoze";
 	$UID = uniqid($prefix);
 		// Prepare an insert statement
-        $sql = "INSERT INTO users (UID,name,email,password_hash,mobile,gender,is_deleted) 
-		VALUES (:uid,:name,:email,:password,:mobile,:gender,:is_deleted)";
+        $sql = "INSERT INTO users (UID,name,email,password_hash,mobile,gender) 
+		VALUES (:uid,:name,:email,:password,:mobile,:gender)";
          
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -17,8 +17,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$stmt->bindParam(":password",$password);
 			$stmt->bindParam(":mobile",$mobile);
 			$stmt->bindParam(":gender",$gender);
-			$stmt->bindParam(":is_deleted",$is_deleted);
-			
             // Set parameters
 			$ID = $UID;
 			$name = $_POST["fullname"];
@@ -26,7 +24,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 			$mobile = $_POST["mobile"];
 			$gender = $_POST["gender"];
-			$is_deleted = 0;
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                $_SESSION["data_inserted"] = true;

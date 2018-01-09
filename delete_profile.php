@@ -5,7 +5,7 @@ session_start();
 $deleted = false;
 
 	$email = $_SESSION["email"];
-	 $sql = "UPDATE users SET is_deleted=1 where email=:email"; 
+	 $sql = "DELETE from users where email=:email"; 
 		
          
         if($stmt = $pdo->prepare($sql)){

@@ -10,7 +10,7 @@ session_start();
 else
 {
 	$email = $_SESSION["email"];
-	$sql = "SELECT name,email, mobile FROM users WHERE email = :email and is_deleted=0";
+	$sql = "SELECT name,email, mobile FROM users WHERE email = :email";
         
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters

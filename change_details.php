@@ -5,7 +5,7 @@ require_once 'config.php';
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	
 	// Prepare an insert statement
-        $sql = "UPDATE users SET name=:name, mobile =:mobile where email=:email and is_deleted=0"; 
+        $sql = "UPDATE users SET name=:name, mobile =:mobile where email=:email"; 
 		
          
         if($stmt = $pdo->prepare($sql)){

@@ -5,7 +5,7 @@ $password_err=false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$email = $_POST["email"];
 	$password= $_POST["password"];
-	$sql = "SELECT name,email, password_hash FROM users WHERE email = :email and is_deleted=0;";
+	$sql = "SELECT name,email, password_hash FROM users WHERE email = :email";
         
         if($stmt = $pdo->prepare($sql)){
             // Bind variables to the prepared statement as parameters
